@@ -32,8 +32,7 @@
                 "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
                 "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
                 "initrd=/install/initrd.gz -- <enter>"
-            ],
-            "output_directory": "ubuntu-13.10-en_US"
+            ]
         }
     ],
     "post-processors": [
