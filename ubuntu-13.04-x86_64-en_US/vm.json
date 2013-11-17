@@ -1,0 +1,43 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox",
+            "guest_os_type": "Ubuntu_64",
+            "iso_url": "http://releases.ubuntu.com/raring/ubuntu-13.04-server-amd64.iso",
+            "iso_checksum": "7d335ca541fc4945b674459cde7bffb9",
+            "iso_checksum_type": "md5",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_wait_timeout": "20m",
+            "headless": true,
+            "http_directory" : ".",
+            "http_port_min" : 9001,
+            "http_port_max" : 9001,
+            "vboxmanage": [
+                ["setextradata", "{{.Name}}", "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"],
+                ["setextradata", "{{.Name}}", "VBoxInternal2/SharedFoldersEnableSymlinksCreate/usr", "1"],
+                ["setextradata", "{{.Name}}", "VBoxInternal2/SharedFoldersEnableSymlinksCreate/home", "1"],
+                ["modifyvm", "{{.Name}}", "--memory", "1024"],
+                ["modifyvm", "{{.Name}}", "--cpus", "2"],
+                ["modifyvm", "{{.Name}}", "--hwvirtex", "on"],
+                ["modifyvm", "{{.Name}}", "--nestedpaging", "on"]
+            ],
+            "boot_command": [
+                "<esc><esc><enter><wait>",
+                "/install/vmlinuz noapic ",
+                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+                "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+                "hostname=raring64 ",
+                "fb=false debconf/frontend=noninteractive ",
+                "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+                "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+                "initrd=/install/initrd.gz -- <enter>"
+            ]
+        }
+    ],
+    "post-processors": [
+        [
+            "vagrant"
+        ]
+    ]
+}
