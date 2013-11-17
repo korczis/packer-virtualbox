@@ -25,7 +25,7 @@
             "boot_command": [
                 "<esc><esc><enter><wait>",
                 "/install/vmlinuz noapic ",
-                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu-13.10-de_DE-preseed.cfg ",
+                "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
                 "debian-installer=de_DE auto locale=de_DE kbd-chooser/method=de ",
                 "hostname=saucy64 ",
                 "fb=false debconf/frontend=noninteractive ",
