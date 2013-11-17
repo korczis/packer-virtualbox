@@ -31,7 +31,7 @@
                 "fb=false debconf/frontend=noninteractive ",
                 "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=Germany ",
                 "keyboard-configuration/variant=Germany console-setup/ask_detect=false ",
-                "initrd=/install/initrd.gz -- <enter>"
+                "initrd=/install/initrd.gz -- <enter><wait10><enter>"
             ],
             "output_directory": "ubuntu-13.10-de_DE"
         }
